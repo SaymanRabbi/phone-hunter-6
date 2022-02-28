@@ -63,5 +63,7 @@ const showData = (data) => {
 }
 // ------Show Details----
 const showDetails = (details) => {
-    console.log(details);
+    // set new url---- 
+    const url = `https://openapi.programming-hero.com/api/phone/${details}`;
+    
 }
