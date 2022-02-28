@@ -43,6 +43,7 @@ const showData = (data) => {
     }
     // -----forEach to got single data-------
     data.forEach(x => {
+        // console.log();
         const div = document.createElement('div');
         div.className = 'col';
         div.innerHTML = `
@@ -52,12 +53,15 @@ const showData = (data) => {
           <div class="card-body">
             <h5 class="card-title">${x.phone_name}</h5>
             <p class="card-text">${x.brand}</p>
-            <button class="btn btn-primary">Show Details</button>
+            <button class="btn btn-primary"onclick="showDetails('${x.slug}')">Show Details</button>
           </div>
         </div>
       </div>
         `
         cardParent.appendChild(div);
     })
-
+}
+// ------Show Details----
+const showDetails = (details) => {
+    console.log(details);
 }
