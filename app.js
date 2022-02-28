@@ -1,5 +1,7 @@
 // ------input----
 const input = document.getElementById('input');
+// card parent
+const cardParent = document.getElementById('card-parent'); 
 // -----Error Function-------
 const errorText = document.getElementById('error-messages');
 errorText.style.display = "none";
@@ -15,18 +17,19 @@ document.getElementById('search-button').addEventListener('click', () => {
         error('block')
     }
     else {
+        // clear card-parent content
+        cardParent.textContent = '';
         error('none')
         // ------add api url-------
     const url = `https://openapi.programming-hero.com/api/phones?search=${inputText}`;
     // add fetch..
     fetch(url)
         .then(res => res.json())
-        .then(data => showData(data.data));
+        .then(data => showData(data.data.slice(0,20)));
     }
 })
 // ------show data in display-----
 const showData = (data) => {
-    const cardParent = document.getElementById('card-parent');
     // -----forEach to got single data-------
     data.forEach(x => {
         const div = document.createElement('div');
