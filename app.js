@@ -2,11 +2,16 @@
 const input = document.getElementById('input');
 // card parent
 const cardParent = document.getElementById('card-parent'); 
-// -----Error Function-------
+// error text
 const errorText = document.getElementById('error-messages');
+// Error img
+const errorImg = document.getElementById('error-img');
 errorText.style.display = "none";
+errorImg.style.display = "none"
+// -----Error Function-------
 const error = (value) => {
     errorText.style.display = value;
+    errorImg.style.display = value;
 }
 // ----search button------
 document.getElementById('search-button').addEventListener('click', () => {
@@ -14,7 +19,8 @@ document.getElementById('search-button').addEventListener('click', () => {
     const inputText = input.value.toLowerCase();
     input.value = '';
     if (inputText === '') {
-        error('block')
+        error('block');
+        cardParent.textContent = '';
     }
     else {
         // clear card-parent content
@@ -41,6 +47,7 @@ const showData = (data) => {
           <div class="card-body">
             <h5 class="card-title">${x.phone_name}</h5>
             <p class="card-text">${x.brand}</p>
+            <button class="btn btn-primary">Show Details</button>
           </div>
         </div>
       </div>
