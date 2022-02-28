@@ -13,7 +13,7 @@
     <h2 class="text-center mt-3 fw-bold">Search The World <span class="text-danger">Best Phones</span></h2>
     <!-- -----implement search filed------ -->
           <div class="container">
-          <div class="input-group mb-3 mt-3 w-50 mx-auto">
+          <div class="input-group mb-5 mt-4 w-50 mx-auto">
             <input type="text" id="input" class="form-control" placeholder="Phone's Names" aria-label="Phone's Names" aria-describedby="search-button">
             <span class="input-group-text" style="cursor: pointer;" id="search-button">Search</span>
             </div>
@@ -22,7 +22,11 @@
          <div class="w-50 mx-auto">
              <p class="text-danger text-center fw-bold" id="error-messages">Please Input Some Value</p>
          </div>
-
+        <!-- ----card container------ -->
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-3 g-4" id="card-parent">
+              </div>
+        </div>
     <!-- ------js----- -->
     <script src="./app.js"></script>
 </body>

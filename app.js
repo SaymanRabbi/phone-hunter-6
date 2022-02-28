@@ -21,6 +21,28 @@ document.getElementById('search-button').addEventListener('click', () => {
     // add fetch..
     fetch(url)
         .then(res => res.json())
-        .then(data => console.log(data));
+        .then(data => showData(data.data));
     }
 })
+// ------show data in display-----
+const showData = (data) => {
+    const cardParent = document.getElementById('card-parent');
+    // -----forEach to got single data-------
+    data.forEach(x => {
+        const div = document.createElement('div');
+        div.className = 'col';
+        div.innerHTML = `
+        <div class="col">
+        <div class="card h-100">
+          <img src="${x.image}" class="card-img-top" alt="">
+          <div class="card-body">
+            <h5 class="card-title">${x.phone_name}</h5>
+            <p class="card-text">${x.brand}</p>
+          </div>
+        </div>
+      </div>
+        `
+        cardParent.appendChild(div);
+    })
+
+}
