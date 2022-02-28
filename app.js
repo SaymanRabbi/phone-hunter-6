@@ -18,7 +18,7 @@ document.getElementById('search-button').addEventListener('click', () => {
     // -------input value with text And Case Sensitive-----
     const inputText = input.value.toLowerCase();
     input.value = '';
-    if (inputText === '') {
+    if (inputText === '' || typeof( parseInt(inputText))=== 'Number') {
         error('block');
         cardParent.textContent = '';
     }
@@ -31,11 +31,16 @@ document.getElementById('search-button').addEventListener('click', () => {
     // add fetch..
     fetch(url)
         .then(res => res.json())
-        .then(data => showData(data.data.slice(0,20)));
+            .then(data => showData(data.data.slice(0, 20)));
     }
 })
 // ------show data in display-----
 const showData = (data) => {
+    // ------if array is zero-----
+    if (data.length === 0) {
+        error('block');
+        return;
+    }
     // -----forEach to got single data-------
     data.forEach(x => {
         const div = document.createElement('div');
