@@ -53,7 +53,6 @@ search.addEventListener('click', () => {
 const loadData = (value) => {
   document.getElementById('show-all').addEventListener('click', () => {
     cardParent.textContent = '';
-    console.log('sayman')
     showData(value.data);
    error('none')
   })
