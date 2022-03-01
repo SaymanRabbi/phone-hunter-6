@@ -71,8 +71,8 @@ const showData = (data) => {
         <div class="card h-100 shadow rounded-3">
           <img src="${x.image}" class="card-img-top" alt="">
           <div class="card-body">
-            <h5 class="card-title">${x.phone_name}</h5>
-            <p class="card-text">Brand: ${x.brand}</p>
+            <h5 class="card-title fw-bold">Product Name: <span class="text-danger">${x.phone_name}</span></h5>
+            <p class="card-text fw-bold">Brand: <span class ="text-danger">${x.brand}</span></p>
             <button class="btn btn-primary"onclick="showDetailsData('${x.slug}')">Show Details</button>
           </div>
         </div>
@@ -94,7 +94,6 @@ const showDetailsData = (details) => {
 }
 // ------show details----
 const showDetails = (detailsData) => {
-    console.log(detailsData);
     popupContainer.innerHTML = `
     <div class="justify-content-center align-items-center d-flex w-100 h-100 custom" >
              <div class="card mb-3 w-50 shadow">
