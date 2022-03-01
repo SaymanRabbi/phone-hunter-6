@@ -68,7 +68,7 @@ const showData = (data) => {
         const div = document.createElement('div');
         div.innerHTML = `
         <div class="col">
-        <div class="card h-100 shadow-lg rounded-3">
+        <div class="card h-100 shadow rounded-3">
           <img src="${x.image}" class="card-img-top" alt="">
           <div class="card-body">
             <h5 class="card-title">${x.phone_name}</h5>
@@ -97,7 +97,7 @@ const showDetails = (detailsData) => {
     console.log(detailsData);
     popupContainer.innerHTML = `
     <div class="justify-content-center align-items-center d-flex w-100 h-100 custom" >
-             <div class="card mb-3 w-50">
+             <div class="card mb-3 w-50 shadow">
              <span id="close"> X </span>
              <div class="row g-0">
                <div class="col-md-12 col-lg-6 col-12  p-3">
