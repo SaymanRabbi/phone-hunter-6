@@ -30,6 +30,7 @@ const spinner = (value) => {
 }
 // ----search button------
 search.addEventListener('click', () => {
+  showAll.style.display = "none";
     // -------input value with text And Case Sensitive-----
      const inputText = input.value.toLowerCase();
      input.value = '';
