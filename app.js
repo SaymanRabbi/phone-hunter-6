@@ -109,6 +109,7 @@ const showDetailsData = (details) => {
 }
 // ------show details----
 const showDetails = (detailsData) => {
+  window.scrollTo(0, 100);
     popupContainer.innerHTML = `
     <div class="justify-content-center align-items-center d-flex w-100 h-100 custom" >
              <div class="card mb-3 w-50 shadow">
