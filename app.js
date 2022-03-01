@@ -86,11 +86,18 @@ const showDetails = (detailsData) => {
                  <button class ="btn btn-danger mb-3">HOT</button>
                    <h5 class="card-title text-danger fw-bold">Phone Name: ${detailsData.name}</h5>
                    <h5 class="card-title">Phone Release Date: ${detailsData.releaseDate? detailsData.releaseDate:"Date Is not Available"}</h5>
-                   <p class="card-text"></p>
-                   <p class="fw-bold text-capitalize text-dark">Main Feature:</p>
-                   <p>1.Storages: ${detailsData.mainFeatures.storage}</p>
-                   <p>2.ChipSet: ${detailsData.mainFeatures.chipSet} </p>
-                   <p>2.DisplaySize: ${detailsData.mainFeatures.displaySize} </p>
+                   <p class="card-text mb-0"></p>
+                   <p class="fw-bold text-capitalize text-dark mb-0">Main Feature:</p>
+                   <p  class="mb-0">1.Storages: ${detailsData.mainFeatures.storage}</p>
+                   <p  class="mb-0">2.ChipSet: ${detailsData.mainFeatures.chipSet} </p>
+                   <p class="mb-0">2.DisplaySize: ${detailsData.mainFeatures.displaySize} </p>
+                   <p class="fw-bold mb-0">Sensors:</p>
+                    <small class="mb-0">1. ${detailsData.mainFeatures.sensors[0]} </small>
+                    <small class="mb-0">2. ${detailsData.mainFeatures.sensors[1]} </small>
+                    <small class="mb-0">3. ${detailsData.mainFeatures.sensors[2]} </small>
+                    <small class="mb-0">4. ${detailsData.mainFeatures.sensors[3]} </small>
+                    <small class="mb-0">5. ${detailsData.mainFeatures.sensors[4]} </small>
+                    <p class="fw-bold mb-0">Others:</p>
                  </div>
                </div>
              </div>
