@@ -1,7 +1,10 @@
 // ------input----
 const input = document.getElementById('input');
+//show all data
+const showAll = document.getElementById('show-all');
+showAll.style.display = "none";
 //Search Button
-const search = document.getElementById('search-button')
+const search = document.getElementById('search-button');
 // card parent
 const cardParent = document.getElementById('card-parent'); 
 //popup container
@@ -31,6 +34,7 @@ search.addEventListener('click', () => {
      const inputText = input.value.toLowerCase();
      input.value = '';
   spinner(true);
+  //show all 
   //popup container
   popupContainer.textContent = '';
   if (inputText === '' || isNaN(inputText) === false) {
@@ -51,7 +55,11 @@ search.addEventListener('click', () => {
 })
 // ------show all data -----
 const loadData = (value) => {
-  document.getElementById('show-all').addEventListener('click', () => {
+  if (value.data.length>20) {
+    showAll.style.display = "block";
+    showAll.style.margin='0 auto'
+  }
+  showAll.addEventListener('click', () => {
     cardParent.textContent = '';
     showData(value.data);
    error('none')
