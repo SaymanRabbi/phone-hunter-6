@@ -98,6 +98,9 @@ const showDetails = (detailsData) => {
                     <small class="mb-0">4. ${detailsData.mainFeatures.sensors[3]} </small>
                     <small class="mb-0">5. ${detailsData.mainFeatures.sensors[4]} </small>
                     <p class="fw-bold mb-0">Others:</p>
+                    <small class="mb-0">1. ${detailsData.others?detailsData.others.WLAN:"unavailable"} </small>
+                    <small class="mb-0">2. ${detailsData.others?detailsData.others.Bluetooth:"unavailable"} </small>
+                    <small class="mb-0">3. ${detailsData.others?detailsData.others.GPS:"unavailable"} </small>
                  </div>
                </div>
              </div>
