@@ -1,0 +1,11 @@
+.custom {
+  position: relative;
+}
+#close {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  font-size: 30px;
+  font-weight: 700;
+  cursor: pointer;
+}

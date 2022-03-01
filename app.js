@@ -96,8 +96,9 @@ const showDetailsData = (details) => {
 const showDetails = (detailsData) => {
     console.log(detailsData);
     popupContainer.innerHTML = `
-    <div class="justify-content-center align-items-center d-flex w-100 h-100" >
+    <div class="justify-content-center align-items-center d-flex w-100 h-100 custom" >
              <div class="card mb-3 w-50">
+             <span id="close"> X </span>
              <div class="row g-0">
                <div class="col-md-12 col-lg-6 col-12  p-3">
                  <img src="${detailsData.image}" class="w-100 h-100  rounded-start" alt="">
@@ -128,5 +129,9 @@ const showDetails = (detailsData) => {
            </div>
       </div>
     `  
-    popupContainer.style.display = 'block';
+  popupContainer.style.display = 'block';
+  // -----close details----
+  document.getElementById('close').addEventListener('click', () => {
+    popupContainer.style.display = 'none';
+  })
 }
