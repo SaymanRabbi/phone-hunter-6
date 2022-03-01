@@ -1,5 +1,7 @@
 // ------input----
 const input = document.getElementById('input');
+//Search Button
+const search = document.getElementById('search-button')
 // card parent
 const cardParent = document.getElementById('card-parent'); 
 // error text
@@ -13,31 +15,45 @@ const error = (value) => {
     errorText.style.display = value;
     errorImg.style.display = value;
 }
+// ------spinner-----
+const spinner = (value) => { 
+  if (value) {
+    search.innerHTML = `<div class="spinner-border me-1"style="height:23px;width:23px" role="status">
+     <span class="visually-hidden">Loading...</span>
+     </div><span class="fw-bolder">wait..</span>`
+  }
+  
+}
 // ----search button------
-document.getElementById('search-button').addEventListener('click', () => {
+search.addEventListener('click', () => {
     // -------input value with text And Case Sensitive-----
     const inputText = input.value.toLowerCase();
-    input.value = '';
-    if (inputText === '' || typeof( parseInt(inputText))=== 'Number') {
+     input.value = '';
+     spinner(true);
+  if (inputText === '' || typeof (parseInt(inputText)) === 'Number') {
         error('block');
-        cardParent.textContent = '';
+       cardParent.textContent = '';
+    // -----remove spinner loading---
+       search.innerText = 'Search'
     }
     else {
         // clear card-parent content
         cardParent.textContent = '';
         error('none')
         // ------add api url-------
-    const url = `https://openapi.programming-hero.com/api/phones?search=${inputText}`;
+       const url = `https://openapi.programming-hero.com/api/phones?search=${inputText}`;
     // add fetch..
-    fetch(url)
+       fetch(url)
         .then(res => res.json())
-            .then(data => showData(data.data.slice(0, 20)));
+      .then(data => showData(data.data.slice(0, 20)));
     }
 })
 // ------show data in display-----
 const showData = (data) => {
     // ------if array is zero-----
-    if (data.length === 0) {
+  if (data.length === 0) {
+      // -----remove spinner loading---
+       search.innerText = 'Search'
         error('block');
         return;
     }
@@ -45,10 +61,9 @@ const showData = (data) => {
     data.forEach(x => {
         // console.log();
         const div = document.createElement('div');
-        div.className = 'col';
         div.innerHTML = `
         <div class="col">
-        <div class="card h-100">
+        <div class="card h-100 shadow-lg rounded-3">
           <img src="${x.image}" class="card-img-top" alt="">
           <div class="card-body">
             <h5 class="card-title">${x.phone_name}</h5>
@@ -60,6 +75,8 @@ const showData = (data) => {
         `
         cardParent.appendChild(div);
     })
+  // -----remove spinner loading---
+  search.innerText = 'Search'
 }
 // ------load Details data----
 const showDetailsData = (details) => {
@@ -79,7 +96,7 @@ const showDetails = (detailsData) => {
              <div class="card mb-3 w-50">
              <div class="row g-0">
                <div class="col-md-12 col-lg-6 col-12  p-3">
-                 <img src="${detailsData.image}" class="w-100  rounded-start" alt="">
+                 <img src="${detailsData.image}" class="w-100 h-100  rounded-start" alt="">
                </div>
                <div class="col-md-12 col-lg-6 col-12 p-3">
                  <div class="card-body">
