@@ -24,7 +24,6 @@ const spinner = (value) => {
      <span class="visually-hidden">Loading...</span>
      </div><span class="fw-bolder">wait..</span>`
   }
-  
 }
 // ----search button------
 search.addEventListener('click', () => {
@@ -35,26 +34,35 @@ search.addEventListener('click', () => {
   //popup container
   popupContainer.textContent = '';
   if (inputText === '' || isNaN(inputText) === false) {
-    console.log('sayman')
         error('block');
        cardParent.textContent = '';
     // -----remove spinner loading---
        search.innerText = 'Search'
     }
     else {
-        // clear card-parent content
-        cardParent.textContent = '';
         error('none')
         // ------add api url-------
-       const url = `https://openapi.programming-hero.com/api/phones?search=${inputText}`;
+     const url = `https://openapi.programming-hero.com/api/phones?search=${inputText}`;
     // add fetch..
-       fetch(url)
+    fetch(url)
         .then(res => res.json())
-      .then(data => showData(data.data.slice(0, 20)));
+      .then(data => loadData(data));
     }
 })
+// ------show all data -----
+const loadData = (value) => {
+  document.getElementById('show-all').addEventListener('click', () => {
+    cardParent.textContent = '';
+    console.log('sayman')
+    showData(value.data);
+   error('none')
+  })
+  showData(value.data.slice(0, 20));
+}
 // ------show data in display-----
 const showData = (data) => {
+  // clear card-parent content
+  cardParent.textContent = '';
     // ------if array is zero-----
   if (data.length === 0) {
       // -----remove spinner loading---
@@ -89,8 +97,7 @@ const showDetailsData = (details) => {
     const url = `https://openapi.programming-hero.com/api/phone/${details}`;
     fetch(url)
         .then(res => res.json())
-    .then(data => showDetails(data.data))
-    
+    .then(data => showDetails(data.data))  
 }
 // ------show details----
 const showDetails = (detailsData) => {
