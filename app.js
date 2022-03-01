@@ -4,6 +4,8 @@ const input = document.getElementById('input');
 const search = document.getElementById('search-button')
 // card parent
 const cardParent = document.getElementById('card-parent'); 
+//popup container
+const popupContainer = document.getElementById('popup-container');
 // error text
 const errorText = document.getElementById('error-messages');
 // Error img
@@ -27,10 +29,13 @@ const spinner = (value) => {
 // ----search button------
 search.addEventListener('click', () => {
     // -------input value with text And Case Sensitive-----
-    const inputText = input.value.toLowerCase();
+     const inputText = input.value.toLowerCase();
      input.value = '';
-     spinner(true);
-  if (inputText === '' || typeof (parseInt(inputText)) === 'Number') {
+  spinner(true);
+  //popup container
+  popupContainer.textContent = '';
+  if (inputText === '' || isNaN(inputText) === false) {
+    console.log('sayman')
         error('block');
        cardParent.textContent = '';
     // -----remove spinner loading---
@@ -67,7 +72,7 @@ const showData = (data) => {
           <img src="${x.image}" class="card-img-top" alt="">
           <div class="card-body">
             <h5 class="card-title">${x.phone_name}</h5>
-            <p class="card-text">${x.brand}</p>
+            <p class="card-text">Brand: ${x.brand}</p>
             <button class="btn btn-primary"onclick="showDetailsData('${x.slug}')">Show Details</button>
           </div>
         </div>
@@ -90,7 +95,6 @@ const showDetailsData = (details) => {
 // ------show details----
 const showDetails = (detailsData) => {
     console.log(detailsData);
-    const popupContainer = document.getElementById('popup-container');
     popupContainer.innerHTML = `
     <div class="justify-content-center align-items-center d-flex w-100 h-100" >
              <div class="card mb-3 w-50">
@@ -101,8 +105,8 @@ const showDetails = (detailsData) => {
                <div class="col-md-12 col-lg-6 col-12 p-3">
                  <div class="card-body">
                  <button class ="btn btn-danger mb-3">HOT</button>
-                   <h5 class="card-title text-danger fw-bold">Phone Name: ${detailsData.name}</h5>
-                   <h5 class="card-title">Phone Release Date: ${detailsData.releaseDate? detailsData.releaseDate:"Date Is not Available"}</h5>
+                   <h5 class="card-title text-danger fw-bold">Product Name: ${detailsData.name}</h5>
+                   <h5 class="card-title">Product Release Date: ${detailsData.releaseDate? detailsData.releaseDate:"Date Is not Available"}</h5>
                    <p class="card-text mb-0"></p>
                    <p class="fw-bold text-capitalize text-dark mb-0">Main Feature:</p>
                    <p  class="mb-0">1.Storages: ${detailsData.mainFeatures.storage}</p>
